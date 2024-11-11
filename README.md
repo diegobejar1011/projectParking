@@ -28,6 +28,7 @@ El proyecto está organizado en una estructura modular para facilitar el manteni
 - **models**: Definición y funcionamiento de las entidades, incluyendo el vehículo.
 - **scene**: Configuración inicial de la escena visual.
 - **view**: Representación gráfica de las entidades dinámicas, como los vehículos.
+- **resources**: Declaración de tipos y métodos para gestionar los recursos compartidos, como la puerta de entrada y los espacios de estacionamiento.
 
 Esta estructura, junto con el uso del patrón **Observer**, permite la comunicación y sincronización entre el modelo y la vista, manteniendo la coherencia del estado en tiempo real.
 
