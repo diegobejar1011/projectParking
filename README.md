@@ -1,18 +1,35 @@
 # Simulador de Estacionamiento en Go
 
-Este proyecto es un simulador de estacionamiento desarrollado en el lenguaje Go. Fue creado con el objetivo de aprender a resolver desafíos relacionados con la concurrencia, aplicando patrones de diseño y utilizando herramientas eficaces para gestionar el flujo de trabajo en sistemas paralelos.
+Este proyecto es un simulador de estacionamiento desarrollado en el lenguaje Go, diseñado como una plataforma de aprendizaje para manejar y aplicar conceptos de concurrencia. La visión fue desarrollar un sistema capaz de gestionar múltiples vehículos que entran, estacionan y salen, usando técnicas de concurrencia para reflejar un comportamiento eficiente y realista de un estacionamiento.
 
 ## Mi Experiencia
 
-Desarrollar el proyecto de simulador de estacionamiento en el lenguaje Go fue una experiencia enriquecedora que me permitió profundizar en el manejo de la concurrencia y en la implementación de patrones de diseño para mejorar la estructura y funcionalidad del código. Este proyecto no solo me dio la oportunidad de resolver desafíos de sincronización y paralelismo, sino también de poner en práctica conceptos avanzados que son cruciales en el desarrollo de sistemas concurrentes.
+El desarrollo del simulador fue una experiencia significativa que me permitió profundizar en la programación concurrente en Go y en la implementación de patrones de diseño. Desde el inicio, fue un desafío aplicar técnicas avanzadas de concurrencia para gestionar múltiples vehículos en un espacio compartido. Implementé el patrón **Observer** para separar responsabilidades entre componentes, lo que facilitó la comunicación entre el modelo de datos y la interfaz gráfica, manteniendo una actualización en tiempo real del estado de los vehículos.
 
-Uno de los puntos clave fue la aplicación del patrón **Observer**, que me permitió organizar el código de manera modular y estructurada, separando las responsabilidades entre los distintos componentes del sistema. Gracias a este patrón, pude gestionar eventos de forma independiente, haciendo que el código fuese más flexible y sencillo de mantener.
+Para la interfaz gráfica, opté por la librería **Fyne**, una herramienta eficiente y flexible que simplificó el desarrollo visual del simulador. Fyne permitió construir una interfaz amigable, en la cual los usuarios pueden observar el flujo de entrada y salida de vehículos y ver los espacios ocupados y libres en tiempo real. Esto añadió una dimensión interactiva y visual al proyecto, reforzando el aprendizaje práctico de los conceptos teóricos.
 
-Para la interfaz gráfica, opté por la librería **Fyne**. Esta elección me dio la oportunidad de explorar una herramienta sencilla y funcional, que me permitió desarrollar una interfaz amigable para el usuario sin perderme en complejidades excesivas de diseño gráfico. Fyne facilitó la construcción de un entorno visual intuitivo para el simulador, en el cual el usuario puede interactuar y observar el funcionamiento del estacionamiento en tiempo real.
+Uno de los mayores desafíos fue el control de acceso mediante una puerta compartida, que gestionaba la entrada y salida simultánea de vehículos. Para resolver esto, utilicé **Locks** y **Semáforos**, asegurando que los recursos compartidos no causaran condiciones de carrera. La sincronización adecuada fue clave para que el sistema operara de forma segura y eficiente. Con estas técnicas, pude implementar funciones como el bloqueo de vehículos cuando el estacionamiento está lleno, la asignación de espacios, y la liberación de los mismos al salir un vehículo, todo en un entorno concurrente.
 
-Para abordar los desafíos de sincronización en la simulación, utilicé **Semáforos** y **Canales con buffer** , técnicas que me permitieron controlar el acceso a los recursos compartidos y manejar de manera segura el acceso concurrente. Cada uno de estos mecanismos resultó fundamental para asegurar que las operaciones se realizaran sin conflictos, evitando condiciones de carrera y otros problemas que suelen surgir en entornos de concurrencia. Fue una gran oportunidad para entender a fondo cómo funcionan estos métodos y cómo su aplicación puede influir en el rendimiento y estabilidad de un sistema concurrente.
+En conclusión, este proyecto no solo cumplió con los objetivos iniciales, sino que también fue una valiosa experiencia educativa, brindándome las bases para enfrentar futuros proyectos en programación concurrente.
 
-En conclusión, este proyecto me permitió mejorar mis habilidades en concurrencia y diseño de software, al tiempo que me brindó una experiencia completa en el desarrollo de un simulador interactivo.
+## Funcionalidades Principales
+
+- **Generación de Vehículos**: Se pueden crear hasta 100 vehículos, simulando un flujo de entrada y salida constante.
+- **Gestión de Capacidad**: El sistema administra un estacionamiento con una capacidad de 20 vehículos, bloqueando el acceso si está lleno.
+- **Control de Acceso**: La puerta de acceso funciona como un recurso compartido, gestionando de forma eficiente la entrada y salida.
+- **Asignación y Liberación de Espacios**: Los vehículos se asignan a espacios disponibles y se libera el espacio cuando salen.
+- **Interfaz Visual**: La interfaz en tiempo real permite observar el comportamiento del estacionamiento y el estado de los vehículos.
+
+## Arquitectura del Proyecto
+
+El proyecto está organizado en una estructura modular para facilitar el mantenimiento y escalabilidad:
+
+- **assets**: Recursos estáticos como imágenes.
+- **models**: Definición y funcionamiento de las entidades, incluyendo el vehículo.
+- **scene**: Configuración inicial de la escena visual.
+- **view**: Representación gráfica de las entidades dinámicas, como los vehículos.
+
+Esta estructura, junto con el uso del patrón **Observer**, permite la comunicación y sincronización entre el modelo y la vista, manteniendo la coherencia del estado en tiempo real.
 
 ## Requisitos
 
@@ -23,4 +40,5 @@ En conclusión, este proyecto me permitió mejorar mis habilidades en concurrenc
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/tuusuario/simulador-estacionamiento.git
+   git clone https://github.com/diegobejar1011/projectParking.git
+
